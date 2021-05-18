@@ -1,3 +1,6 @@
+//구글 쌤의 도움을 받았읍니다.
+//20402 권성빈
+
 #include <iostream>
 #include <string>
 #include <stack>
