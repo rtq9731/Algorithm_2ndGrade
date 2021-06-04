@@ -1,56 +1,43 @@
 //20402 권성빈
-#include <iostream>
+#include "BinaryTree.h"
 
-// 1. 자료형의 정의
+using namespace std;
 
-typedef int BTData;
-
-struct BTreeNode
+int main()
 {
-	BTData data;
-	struct BTreeNode* left;
-	struct BTreeNode* right;
-};
+	BTreeNode* bt1 = MakeBTreeNode();
+	BTreeNode* bt2 = MakeBTreeNode();
+	BTreeNode* bt3 = MakeBTreeNode();
+	BTreeNode* bt4 = MakeBTreeNode();
+	BTreeNode* bt5 = MakeBTreeNode();
+	BTreeNode* bt6 = MakeBTreeNode();
 
-// 2. 선언된 자료형(BTreeNode)
+	SetData(bt1, 1);
+	SetData(bt2, 2);
+	SetData(bt3, 3);
+	SetData(bt4, 4);
+	SetData(bt5, 5);
+	SetData(bt6, 6);
 
-BTreeNode* MakeBTreeNode(void)
-{
-	BTreeNode* nd = new BTreeNode;
+	MakeLeftSubTree(bt1, bt2);
+	MakeRightSubTree(bt1, bt3);
+	MakeLeftSubTree(bt2, bt4);
+	MakeRightSubTree(bt2, bt5);
+	MakeRightSubTree(bt3, bt6);
 
-	nd->left = NULL;
-	nd->right = NULL;
-	return nd;
-}
+	PreorderTraverse(bt1);
+	cout << endl;
+	InorderTraverse(bt1);
+	cout << endl;
+	PostorderTraverse(bt1);
+	cout << endl;
 
-// 3. 메모리 삭제 함수 생성
+	DeleteBTreeNode(bt1);
+	DeleteBTreeNode(bt2);
+	DeleteBTreeNode(bt3);
+	DeleteBTreeNode(bt4);
+	DeleteBTreeNode(bt5);
+	DeleteBTreeNode(bt6);
 
-void DeleteBTreeNode(BTreeNode* bt)
-{
-	delete bt;
-}
-
-// 4. 변수(노드)에 값 설정
-
-void SetData(BTreeNode* bt, BTData data)
-{
-	bt->data = data;
-}
-
-// 5. 이진트리의 관계 설정
-
-void MakeLeftSubTree(BTreeNode* main, BTreeNode* sub)
-{
-	if (main->left != NULL)
-		delete main->left;
-
-	main->left = sub;
-}
-
-void MakeRightSubTree(BTreeNode* main, BTreeNode* sub)
-{
-	if (main->right != NULL)
-		delete main->right;
-
-	main->right = sub;
+	return (0);
 }
