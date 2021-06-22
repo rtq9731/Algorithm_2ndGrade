@@ -1,4 +1,3 @@
-//20402 ±Ç¼ººó
 #include <string>
 #include <vector>
 #include "Node.h"	
